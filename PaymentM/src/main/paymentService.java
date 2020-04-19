@@ -28,7 +28,7 @@ public String insertDoctor(String DoctorID, String DoctorName, String Specializa
  {return "Error while connecting to the database for inserting."; }
  // create a prepared statement
  String query = " insert into items
- ('PID','ProductrName',,'Contact','Value','Date')"
+ ('PatientID','ProductrName',,'Contact','Value','Date')"
  + " values (?, ?, ?, ?, ?,?)";
  PreparedStatement preparedStmt = con.prepareStatement(query);
  // binding values
@@ -81,11 +81,11 @@ public String readPayment()
  String Contact = Integer.toString(rs.getInt("Contact"));
  String Address = rs.getString("Address");
  // Add into the html table
- output += "<tr><td>" + ID + "</td>";
- output += "<td>" + DoctorName + "</td>";
- output += "<td>" + Specialization + "</td>";
+ output += "<tr><td>" + PatientID + "</td>";
+ output += "<td>" + ProductName + "</td>";
+ output += "<td>" + Value + "</td>";
  output += "<td>" + Contact + "</td>";
- output += "<td>" + Address + "</td>";
+ output += "<td>" + Date + "</td>";
  // buttons
  output += "<td><input name=\"btnUpdate\" type=\"button\"
  value=\"Update\" class=\"btn btn-secondary\"></td>"
@@ -117,7 +117,7 @@ public String updatePayment(String PaymentID, String PaymentName, String Contact
  {return "Error while connecting to the database for updating."; }
  // create a prepared statement
  String query = "UPDATE Payment SET PaymentID=?,ProductName=?,Value=?,Contact=?,Date=?"
- WHERE DID=?";
+ WHERE PatientID=?";
  PreparedStatement preparedStmt = con.prepareStatement(query);
  // binding values
  preparedStmt.setString(1, PID);
